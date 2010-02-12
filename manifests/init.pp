@@ -14,6 +14,8 @@
 #
 
 class rails {
-	include rubygems
-	package { rails: provider => gem }
+    case $operatingsystem {
+        debian: { include rails::debian }
+        default: { include rails::gem }
+    }
 }
